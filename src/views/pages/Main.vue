@@ -58,6 +58,28 @@
                        this.$store.state.email = response.data.data.config.email
                        this.$store.state.phone = response.data.data.config.phone
                        this.$store.state.global_address = response.data.data.global_configs.global_address
+
+                       var head = document.getElementsByTagName('head');
+                       //title
+                       document.title= response.data.data.global_configs.global_title
+                       var meta = document.createElement('meta')
+                       meta.setAttribute('property', 'og:title')
+                       meta.content = response.data.data.global_configs.global_title
+                       head[0].appendChild(meta)
+                       //kewords
+                       var meta1 = document.createElement('meta')
+                       meta1.setAttribute('name', 'Keywords')
+                       meta1.content = response.data.data.global_configs.global_keywords
+                       head[0].appendChild(meta1) 
+                       //description
+                       var meta2 = document.createElement('meta')
+                       meta2.setAttribute('name', 'description')
+                       meta2.content = response.data.data.global_configs.global_description
+                       head[0].appendChild(meta2) 
+                       var meta3 = document.createElement('meta')
+                       meta3.setAttribute('name', 'og:description')
+                       meta3.content = response.data.data.global_configs.global_description
+                       head[0].appendChild(meta3)
                     }else{
                         Toast(this.$t('serveError'))
                     }
