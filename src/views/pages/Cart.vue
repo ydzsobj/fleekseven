@@ -639,4 +639,7 @@
 .huicolor{
       color: #969799
     } 
+.navbar-div >>> .van-nav-bar__title{
+    font-size: 16px
+}
 </style>
