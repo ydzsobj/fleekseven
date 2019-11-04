@@ -164,7 +164,7 @@ export default {
     }
 }
 </script>
-<style scope>
+<style scoped>
     .van-nav-bar .van-icon {
         font-size: 26px;
         color:#ef3470
