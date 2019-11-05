@@ -57,9 +57,9 @@
             <div v-if="$store.state.lang==='ind-BA'" class="goods-price">{{goodsInfo.money_sign}}{{goodsInfo.price | num}}  <s class="huicolor">{{goodsInfo.money_sign}}{{goodsInfo.original_price | num}}</s></div>
             <div v-else class="goods-price"> <s class="huicolor">{{goodsInfo.money_sign}}{{goodsInfo.original_price }}</s> {{goodsInfo.money_sign}}{{goodsInfo.price }} </div>
           </van-cell>
-          <van-cell :border="false">
+          <!-- <van-cell :border="false">
             <van-progress :percentage="78" :show-pivot="false" :stroke-width="12" color="#ef3470" style="width: 60%; display: inline-block;"/> <span style=" float: right;">{{$t('stock')}}{{(70+goodsInfo.category_id)+'%'}}</span>
-          </van-cell>
+          </van-cell> -->
           <van-cell :value="$t('storeenter')" icon="shop-o" is-link @click.native="tohome" :border="false">
             <template slot="title">
               <span class="van-cell-text">{{ $t('store') }}</span>
@@ -1082,10 +1082,12 @@
   padding: 0px
 }
 #detailcontent >>> img {
-  width: 100%
+  width: 100%;
+  display: block;
 }
 #detailcontent >>> video {
-  width: 100%
+  width: 100%;
+  display: block;
 }
 #detailcontent >>> p {
   word-wrap:break-word;
