@@ -82,7 +82,7 @@ export default {
           this.$router.go(-2)
         },
         showDesc(item){
-            return item.skuAttrText.map(ele=>{return ele.name}).join('/')+'   '+item.messages.message_0
+            return item.skuAttrText.map(ele=>{return ele.name}).join('/')+'   '+(item.messages.message_0||'')
         },
         showImage(skuAttrText) {
             let img=''
