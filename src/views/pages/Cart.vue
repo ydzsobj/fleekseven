@@ -435,7 +435,7 @@
                                 })
                             localStorage.cartInfo =  JSON.stringify(newCart)       
                             }
-                            try{fbq('track', 'InitiateCheckout');console.log('initcheckout')}catch(e){};
+
                             try{ fbq('track', 'Purchase', {value: int(this.countPrice), currency:'USD'}) ;console.log('Purchase')}catch(e){}
                             this.$router.push({name:'order',params:{orderData: this.malldataOrder,orderResponse: response.data.data}})
                         }else{

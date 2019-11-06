@@ -11,7 +11,7 @@
 
         <van-nav-bar
           class="left50"
-          :left-text="$t('home')"
+          :left-text="$t('back')"
           left-arrow
           fixed
           @click-left="onClickLeft"
@@ -525,7 +525,7 @@
             this.goodsId=this.$route.query.goodsId ?this.$route.query.goodsId-0: this.$route.params.goodsId-0
             console.log(this.goodsId)
             this.getInfo()
-            this.getNotice()
+            // this.getNotice()
             // this.$store.state.cartNum = localStorage.cartInfo ? (JSON.parse(localStorage.cartInfo).length===0?'':JSON.parse(localStorage.cartInfo).length) : ''
         },
         mounted(){
@@ -546,7 +546,7 @@
             if(this.goodsId != goodsId){
               this.goodsId = goodsId
               this.getInfo()
-              this.getNotice()
+              // this.getNotice()
             }
         },
         methods: {
@@ -683,7 +683,10 @@
                 }
               }, 500);
             },
-            showSkuBuy() {this.show = true ; this.isBuyCartAttr = 'buy';this.showAddCartBtn=false;this.buyText= this.$t('ok');setTimeout(()=>{ this.$refs.cart.getCartInfo() },200)},
+            showSkuBuy() {this.show = true ; this.isBuyCartAttr = 'buy';this.showAddCartBtn=false;this.buyText= this.$t('ok');
+                            try{fbq('track', 'InitiateCheckout');console.log('initcheckout')}catch(e){};
+                            setTimeout(()=>{ this.$refs.cart.getCartInfo() },200)
+                            },
             showSkuCart() {this.show = true ; this.isBuyCartAttr = 'cart';this.showAddCartBtn=false;this.buyText= this.$t('ok')},
             showSkuAttr() {this.show = true ; this.isBuyCartAttr = 'attr';this.showAddCartBtn=true;this.buyText= this.$t('buy')},
             onBuyClicked(skuData){
