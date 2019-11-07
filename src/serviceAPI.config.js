@@ -10,23 +10,8 @@ if(process.env.NODE_ENV === 'development'){
 
      if(host==='fleekfly.xyz'){
          LOCALURL =  "http://shop.fleekfly.xyz/"
-     }else if(host==='www.global-shop-id.com'){
-         LOCALURL =  "http://globalshop.fleekfly.xyz/"
-     }else if(host==='www.perbelanjaan-id.com'){
-        LOCALURL =  "http://perbelanjaan.fleekfly.xyz/"
-    }else if(host==='www.crystalmarket-id.com'){
-        LOCALURL =  "http://crystalmarket.fleekfly.xyz/"
-    }else if(host==='www.daily-shopping-mall.com'){
-        LOCALURL =  "http://dailyshop.fleekfly.xyz/"
-    }else if(host==='www.richard-market.com'){
-        LOCALURL =  "http://richardmarket.fleekfly.xyz/"
-    }else if(host==='www.watchmall-id.com'){
-        LOCALURL =  "http://watchmall.fleekfly.xyz/"
-    }else if(host==='www.crystalmarket.sg'){
-        LOCALURL =  "http://crystalsg.fleekfly.xyz/"
-    }
-    else if(host==='www.joyelikeyoga.com'){
-        LOCALURL =  "http://joyelikeyoga.fleekfly.xyz/"
+     }else if(host==='www.opairs.com'){
+        LOCALURL =  "http://shop.topairs.com/"
     }else{
         LOCALURL =  "http://shop.fleekfly.xyz/"
     }
