@@ -252,7 +252,7 @@
            this.getCartInfo() 
            this.submitloading= false //每次进来 防止有loading
        },
-       mounted() {console.log(this.cartInfo)},
+    //    mounted() {console.log(this.cartInfo)},
        computed:{
            totalMoney(){
                this.malldata = []
@@ -424,12 +424,10 @@
                         data: data
                     })
                     .then(response=>{
-                        console.log(response)
+                        // console.log(response)
                         if(response.status== 200 && response.data.success){
-                            console.log('okok',response.status,response.data.success)
                             //如果不是直接购买，下单成功后删除对应购物车商品
                             if(this.isBuyCartAttr != 'buy'){
-                                console.log('筛选购物车去掉已经买过')
                             let cartInfo1=JSON.parse(localStorage.cartInfo || "[]")
                             //筛选购物车去掉已经买过的留下还没买的
                             let newCart = cartInfo1.filter(value => {
@@ -441,7 +439,6 @@
                             try{ fbq('track', 'Purchase', {value: int(this.countPrice), currency:'USD'}) ;console.log('Purchase')}catch(e){}
                             this.$router.push({name:'order',params:{orderData: this.malldataOrder,orderResponse: response.data.data}})
                         }else{
-                            console.log('nonon',response.status,response.data.success)
                             Toast(this.$t('serveError'));Toast(this.$t('serveError'))
                             this.submitloading=false
                         }
@@ -491,7 +488,7 @@
             },
             confirm(list){
                 this.areaShow = false
-                console.log(list)
+                // console.log(list)
                 this.short_address = list[0].name + '/' + list[1].name + '/' +list[2].name
                 this.optionsArrt = this.areaList.post[list[2].code] || []  //对应省市区的 邮政编码数组赋值
                 if( this.areaList.post[list[2].code] ){  this.zipCode= this.optionsArrt[0] }
@@ -524,7 +521,7 @@
                   .then(response=>{
                       
                       if(response.status== 200 && response.data.success){
-                         console.log(response.data.data)
+                        //  console.log(response.data.data)
                          if(response.data.data.total_off===0){
                             Toast(this.$t('couponUn'));Toast(this.$t('couponUn')) 
                          }else{
