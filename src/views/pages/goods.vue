@@ -616,7 +616,7 @@
                               Toast(this.$t('serveError'))
                               reject(err)
                           }
-                           console.log(this.goodsInfo)
+                          //  console.log(this.goodsInfo)
                       })
                       .catch(error=>{
                           Toast(this.$t('serveError'))
@@ -727,7 +727,7 @@
                       try{fbq('track', 'AddToCart');console.log('addtocart')}catch(e){} 
                       try{fbq('track', 'Lead');console.log('Lead')}catch(e){} 
                       // this.skuDatas  = Object.assign(newGoodsInfo , skuData)
-                      console.log(this.fatherSkuData())
+                      // console.log(this.fatherSkuData())
                       this.$refs.cart.getCartInfo()
                   }else{
                     this.$refs.cart.getCartInfo()

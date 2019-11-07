@@ -236,11 +236,11 @@
           
        }, 
        created(){
-           console.log('ddd',this.$store.state.fix, 'cc',JSON.parse(localStorage.fix || "0"))
+        //    console.log('ddd',this.$store.state.fix, 'cc',JSON.parse(localStorage.fix || "0"))
            let storefix = this.$store.state.fix
            let locafix = JSON.parse(localStorage.fix || "0")-0
            if(!storefix){
-               console.log('cartinitfix')
+            //    console.log('cartinitfix')
              try {
                 fbq('init', locafix); 
                 fbq('track', 'PageView');
@@ -273,11 +273,11 @@
                        }
                    });
                });
-               console.log(this.malldata,this.countPrice)
+            //    console.log(this.malldata,this.countPrice)
                return this.countPrice
            },
            totalMoneyCoupon(){
-               console.log(this.totalMoney - this.total_off)
+            //    console.log(this.totalMoney - this.total_off)
                let num = this.totalMoney - this.total_off
                  if(this.$store.state.lang === 'ind-BA' && (num/100).toString().indexOf('.')>0){
                      this.decimalLength = 2
@@ -329,12 +329,12 @@
            },
             //得到购物车数据的方法
             getCartInfo(skuDatas) { 
-                console.log('laofan',skuDatas)
+                // console.log('laofan',skuDatas)
                 // let skuData = this.$route.params.skuData ? this.$route.params.skuData : this.$route.query.skuData
 
                 //  this.isBuy = skuData ? true : false //立即购买还是购物车
                 if(this.isBuyCartAttr === 'buy'){
-                    console.log(skuDatas)
+                    // console.log(skuDatas)
                     if(skuDatas){
                         this.cartInfo=[]
                         this.cartInfo.push(skuDatas)
@@ -342,7 +342,7 @@
                         this.checkedGoods.push(skuDatas.selectedSkuComb.id)
                     }else{
                         let datas = this.fatherSkuData()
-                        console.log(datas)
+                        // console.log(datas)
                         if(datas.selectedSkuComb){
                            this.cartInfo=[]
                            this.cartInfo.push(datas)
@@ -364,8 +364,8 @@
                        this.checkedGoods.push(element.selectedSkuComb.id)
                     });
                    } 
-                   console.log('checkedGoods',this.checkedGoods)
-                   console.log(this.cartInfo)
+                //    console.log('checkedGoods',this.checkedGoods)
+                //    console.log(this.cartInfo)
                    this.isEmpty=this.cartInfo.length>0 ?true : false
                 }
             
@@ -405,7 +405,7 @@
                }else if (this.email!='' && !reg.test(this.email)){
                   Toast(this.$t('errEmail'));Toast(this.$t('errEmail'));return
                }
-                console.log(this.malldata,this.countPrice)
+                // console.log(this.malldata,this.countPrice)
                 this.submitloading=true
                 let data = {}
                 data.cart_data = this.malldata
