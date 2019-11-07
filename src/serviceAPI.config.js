@@ -5,16 +5,7 @@ if(process.env.NODE_ENV === 'development'){
 }else if(process.env.NODE_ENV === 'test'){
     var LOCALURL =  "http://www.website.cc/"
 }else{
-    var LOCALURL =  ""
-    var host = location.host
-
-     if(host==='fleekfly.xyz'){
-         LOCALURL =  "http://shop.fleekfly.xyz/"
-     }else if(host==='www.topairs.com'){
-        LOCALURL =  "http://shop.topairs.com/"
-    }else{
-        LOCALURL =  "http://shop.fleekfly.xyz/"
-    }
+    var LOCALURL =  "http://shop.topairs.com/"
 }
 console.log(process.env.NODE_ENV,location.host)
 const URL ={
