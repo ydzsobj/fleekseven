@@ -444,8 +444,8 @@
                             Toast(this.$t('serveError'));Toast(this.$t('serveError'))
                             this.submitloading=false
                         }
-                    }).catch((err)=>{
-                        console.log('serveerror')
+                    }).catch(err=>{
+                        console.log('serveerror',err)
                             Toast(this.$t('serveError'));Toast(this.$t('serveError'))
                             this.submitloading=false
                     })
