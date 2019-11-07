@@ -113,9 +113,8 @@ export default {
         },
         getList(){
             this.index_errOrder++
-            console.log(this.index_errOrder)
             if(this.index_errOrder === 1){
-                console.log('a'); this.isLoading = false;this.loading = false; return false
+                this.isLoading = false;this.loading = false; return false
             } else{
                 axios({
                       url:url.getGoodsListByCategorySubID,
