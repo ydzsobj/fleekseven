@@ -61,6 +61,7 @@
 
                        var head = document.getElementsByTagName('head');
                        //title
+                       document.querySelector("meta[property='og:title']").remove();
                        document.title= response.data.data.global_configs.global_title
                        var meta = document.createElement('meta')
                        meta.setAttribute('property', 'og:title')
@@ -76,6 +77,7 @@
                        meta2.setAttribute('name', 'description')
                        meta2.content = response.data.data.global_configs.global_description
                        head[0].appendChild(meta2) 
+                       document.querySelector("meta[property='og:description']").remove();
                        var meta3 = document.createElement('meta')
                        meta3.setAttribute('name', 'og:description')
                        meta3.content = response.data.data.global_configs.global_description
