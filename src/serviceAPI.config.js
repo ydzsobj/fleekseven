@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'development'){
 
      if(host==='fleekfly.xyz'){
          LOCALURL =  "http://shop.fleekfly.xyz/"
-     }else if(host==='www.opairs.com'){
+     }else if(host==='www.topairs.com'){
         LOCALURL =  "http://shop.topairs.com/"
     }else{
         LOCALURL =  "http://shop.fleekfly.xyz/"
