@@ -152,7 +152,7 @@
                 method:'get',
             })
             .then(response=>{
-                console.log(response)
+                // console.log(response)
                 if(response.status==200){
                     this.category=response.data.data.category;
                     // this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
@@ -174,7 +174,7 @@
                 this.$router.push({name:'CategoryList',params:{categorySubId:id,index:index}})
             },
             goGoodsPage(id) {
-                console.log(id)
+                // console.log(id)
                 this.$router.push({name:'Goods',query:{goodsId:id}})
             },
             onClickNavLeft(){
@@ -189,7 +189,7 @@
             }
         },
         mounted(){
-            console.log(location.href)
+            // console.log(location.href)
             let winHeight = document.documentElement.clientHeight
             document.getElementById("navLeft").style.height=winHeight -46 +'px'
         }
