@@ -426,7 +426,7 @@
                     .then(response=>{
                         console.log(response)
                         if(response.status== 200 && response.data.success){
-                            console.log('nook',response.status,response.data.success)
+                            console.log('okok',response.status,response.data.success)
                             //如果不是直接购买，下单成功后删除对应购物车商品
                             if(!this.isBuy){
                             let cartInfo1=JSON.parse(localStorage.cartInfo)
@@ -440,14 +440,10 @@
                             try{ fbq('track', 'Purchase', {value: int(this.countPrice), currency:'USD'}) ;console.log('Purchase')}catch(e){}
                             this.$router.push({name:'order',params:{orderData: this.malldataOrder,orderResponse: response.data.data}})
                         }else{
-                            console.log('ok',response.status,response.data.success)
+                            console.log('nonon',response.status,response.data.success)
                             Toast(this.$t('serveError'));Toast(this.$t('serveError'))
                             this.submitloading=false
                         }
-                    }).catch(err=>{
-                        console.log('serveerror',err)
-                            Toast(this.$t('serveError'));Toast(this.$t('serveError'))
-                            this.submitloading=false
                     })
             },
             showImage(skuAttrText) {
