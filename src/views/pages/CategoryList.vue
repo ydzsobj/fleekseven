@@ -231,6 +231,7 @@
 <style scoped>
     #leftNav{
         background-color: #f8f8f8;
+        overflow-y: auto;
     }
     /* #leftNav ul li {
         line-height: 2rem;
