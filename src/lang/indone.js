@@ -81,7 +81,7 @@ export default {
     floorPage_1Title: 'Perhatikan',
     floorPage_1_1: 'Hasil penggunaan sebenarnya produk ini ditentukan oleh keadaan pribadi, tidak bisa menjamin semua pengguna dapat menikmati efek promosi.Kalau ada pertanyaan,bisa hubungi kami via layanan pengguna online atau email(',
     floorPage_1_2: '),perusahaan kami memiliki hak interpretasi akhir.',
-    floorPage_1_2_1_Html: '<strong>Penyangkalan</strong><p>Situs ini bukan bagian dari situs Facebook atau Inc. Selain itu, situs ini tidak disetujui Facebook dengan cara apapun. Thefacebook merupakan ciri khas FACEBOOK, Inc.</p>',
+    floorPage_1_2_1_Html: '<strong>Penyangkalan</strong><p style="color: #ef3470;">Situs ini bukan bagian dari situs Facebook atau Inc. Selain itu, situs ini tidak disetujui Facebook dengan cara apapun. Thefacebook merupakan ciri khas FACEBOOK, Inc.</p>',
     floorPage_2Title: 'Cara penggantian dan pengembalian',
     floorPage_2_1: '1.Alasan pribadi:Dalam 7 hari dari tanggal penerimaan barang dan tidak mempengaruhi penjualan lagi.Silakan hubungi layanan pelanggan online kami atau kirim email ke',
     floorPage_2_2: '. Setelah terima permintaan Anda,bagian layanan pelanggan kami akan mengurus dalam 1-3 hari kerja,ongkos penggantian dan pengembalian dibayarkan oleh pelanggan sendiri.',
