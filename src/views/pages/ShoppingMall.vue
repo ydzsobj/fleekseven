@@ -287,15 +287,19 @@
         /* margin:0 .3rem .3rem .3rem; */
         /* border-radius: .3rem; */
         font-size:14px;
-        display:flex;
+        overflow: hidden;
+        /* display:flex;
         flex-direction:row;
-        flex-wrap:nowrap;
+        flex-wrap:nowrap; */
     }
     .type-bar div{
         padding:.3rem;
         font-size:12px;
         text-align: center;
-        flex:1;
+        /* flex:1; */
+        float: left;
+        width: 20%;
+        box-sizing: border-box;
     }
     .type-bar div span{
         display: inline-block
