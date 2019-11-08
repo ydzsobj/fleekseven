@@ -44,7 +44,7 @@
                 <img :src="cate.image_url" width="90%">
                 <span>{{cate.mallCategoryName}}</span>
             </div>
-        </div>  
+        </div> 
         <!--adbanner area-->
         <!-- <div>
             <img v-lazy="adBanner" width="100%" />
@@ -290,7 +290,8 @@
         /* margin:0 .3rem .3rem .3rem; */
         /* border-radius: .3rem; */
         font-size:14px;
-        overflow: hidden;
+        /* overflow: hidden; */
+        text-align: center;
         /* display:flex;
         flex-direction:row;
         flex-wrap:nowrap; */
@@ -300,7 +301,8 @@
         font-size:12px;
         text-align: center;
         /* flex:1; */
-        float: left;
+        /* float: left; */
+        display:inline-block;
         width: 20%;
         box-sizing: border-box;
     }
