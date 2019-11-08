@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
  .footer4{
         padding-bottom: 50px;
     }

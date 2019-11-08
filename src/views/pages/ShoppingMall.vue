@@ -91,6 +91,9 @@
                 </van-list>
             </div>
         </div>
+        <div class="baozhang">
+            <div v-html="$t('floorPage_1_2_1_Html')"></div>
+        </div>
         <mainFooter></mainFooter>
         
     </div>
@@ -356,7 +359,19 @@
     z-index: 1;
     border-radius: 50% 50% 0px 0px;
 }
-
+    /* .baozhang {
+        text-align: center;
+        margin-bottom: 8px;
+        padding-top: 10px;
+        margin-top: 15px;
+        border-top: 1px dashed #ddd;
+    }
+    .baozhang div p{
+        font-size: 12px;
+        margin: 0;
+        line-height: 18px;
+        color: #777;
+    } */
 
 
 </style>
