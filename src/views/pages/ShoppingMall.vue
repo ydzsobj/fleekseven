@@ -44,7 +44,7 @@
                 <img :src="cate.image_url" width="90%">
                 <span>{{cate.mallCategoryName}}</span>
             </div>
-        </div>  
+        </div> 
         <!--adbanner area-->
         <!-- <div>
             <img v-lazy="adBanner" width="100%" />
@@ -90,6 +90,9 @@
                     <!-- </van-row> -->
                 </van-list>
             </div>
+        </div>
+        <div class="baozhang">
+            <div v-html="$t('floorPage_1_2_1_Html')"></div>
         </div>
         <mainFooter></mainFooter>
         
@@ -287,7 +290,8 @@
         /* margin:0 .3rem .3rem .3rem; */
         /* border-radius: .3rem; */
         font-size:14px;
-        overflow: hidden;
+        /* overflow: hidden; */
+        text-align: center;
         /* display:flex;
         flex-direction:row;
         flex-wrap:nowrap; */
@@ -297,7 +301,8 @@
         font-size:12px;
         text-align: center;
         /* flex:1; */
-        float: left;
+        /* float: left; */
+        display:inline-block;
         width: 20%;
         box-sizing: border-box;
     }
@@ -356,7 +361,19 @@
     z-index: 1;
     border-radius: 50% 50% 0px 0px;
 }
-
+    /* .baozhang {
+        text-align: center;
+        margin-bottom: 8px;
+        padding-top: 10px;
+        margin-top: 15px;
+        border-top: 1px dashed #ddd;
+    }
+    .baozhang div p{
+        font-size: 12px;
+        margin: 0;
+        line-height: 18px;
+        color: #777;
+    } */
 
 
 </style>
