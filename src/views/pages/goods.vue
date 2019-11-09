@@ -95,7 +95,7 @@
                         </van-image>   
                       </div> -->
                       <div id="detailcontent" v-html="goodsInfo.detail_desc"></div>
-                      <van-swipe :autoplay="2000" :duration="1500" :show-indicators="false" style="background-color: #fff;height:200px" vertical v-if="goodsInfo.comments && goodsInfo.comments.length > 0">
+                      <van-swipe :autoplay="2000" :duration="1500" :show-indicators="false" style="background-color: #fff;height:350px" vertical v-if="goodsInfo.comments && goodsInfo.comments.length > 0">
                         <template v-for="item in goodsInfo.comments" >
                         <van-swipe-item :key="item.id">
                             <van-cell>
