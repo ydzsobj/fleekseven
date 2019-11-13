@@ -84,6 +84,17 @@
             :error-message="errTelephone"
             @input="fbinput"
           />
+            <van-field
+            v-model="telephone2"
+            :label="$t('phoneNumber2')"
+            clearable
+            clickable
+            :placeholder="$t('phoneNumberholder2')"
+            type="number"
+            required
+            :error-message="errTelephone"
+            @input="fbinput"
+          />
           <van-field
             v-model="email"
             :label="$t('email')"
@@ -222,6 +233,7 @@
                coupoCode: '',
                name: '',
                telephone: '',
+               telephone2: '',
                address: '',
                short_address:'',
                email: '',
@@ -398,6 +410,8 @@
                    this.errTelephone = this.$t('errTelephone');return
                }else if (!regTele.test(this.telephone)){
                    this.errTelephone = this.$t('errTelephone2');return
+               }else if (this.telephone !=this.telephone2){
+                   this.errTelephone = this.$t('errTelephone3');return
                }else if (this.short_address===''){
                    this.errShort_address = this.$t('errShort_address');return
                }else if(this.address===''){
