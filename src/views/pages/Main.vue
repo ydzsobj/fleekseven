@@ -58,6 +58,7 @@
                        this.$store.state.email = response.data.data.config.email
                        this.$store.state.phone = response.data.data.config.phone
                        this.$store.state.global_address = response.data.data.global_configs.global_address
+                       this.$store.state.title = response.data.data.global_configs.global_title
 
                        var head = document.getElementsByTagName('head');
                        //title

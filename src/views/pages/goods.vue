@@ -10,6 +10,7 @@
       <van-pull-refresh v-model="pullLoading" @refresh="onRefresh" :pulling-text="$t('pullingText')" :loosing-text="$t('lossText')" :loading-text="$t('loading')">
 
         <van-nav-bar
+          :title="$store.state.title"
           class="left50"
           :left-text="$t('back')"
           left-arrow
@@ -17,7 +18,7 @@
           @click-left="onClickLeft"
           @click-right="onClickRight"
         >
-          <img src="../../assets/images/ydzstou.png" height="46px" slot="title">
+          <!-- <img src="../../assets/images/ydzstou.png" height="46px" slot="title"> -->
           <van-icon name="service" slot="right" size="20px"/>
         </van-nav-bar>
          <van-dialog

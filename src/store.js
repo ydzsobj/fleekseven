@@ -11,7 +11,8 @@ export default new Vuex.Store({
       email: '',
       phone: '',
       global_address: '',
-      fix: null
+      fix: null,
+      title: ''
   },
   mutations: {
       // cartNumCount(state) {
