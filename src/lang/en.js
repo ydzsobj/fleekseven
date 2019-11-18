@@ -35,6 +35,7 @@ export default {
     name: 'Name',
     nameholder: 'Please input your name',
     phoneNumber: 'Phone Number',
+    phoneNumber2: 'Phone Number',
     phoneNumberholder: ' Please input your phone number',
     email: 'Email',
     emailholder: 'Please input your email',
