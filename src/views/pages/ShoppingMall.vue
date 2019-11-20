@@ -13,9 +13,9 @@
                 </van-col>
             </van-row>
         </div> -->
-        <van-nav-bar @click-left="onClickNavLeft" left-arrow :fixed="bar_fixed" :z-index=3 class="left50" >
+        <van-nav-bar @click-left="onClickNavLeft" left-arrow :fixed="bar_fixed" :z-index=3 class="left50" :title="$store.state.title">
             <van-icon name="wap-nav" slot="left" />
-            <img src="../../assets/images/ydzstou.png" slot="title" style="max-height:40px">
+            <!-- <img src="../../assets/images/ydzstou.png" slot="title" style="max-height:40px"> -->
             <van-icon name="search" slot="right" @click="onSeek" />
         </van-nav-bar>
         <div style="height:46px"></div>

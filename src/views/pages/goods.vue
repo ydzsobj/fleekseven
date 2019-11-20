@@ -198,7 +198,7 @@
                         </van-cell>
                         <van-cell>
                             <div slot="default" class="huicolor maxheight">
-                              <img src="../../assets/images/ydzs.png" width="100px" style="float: left;margin-right: 10px;">
+                              <!-- <img src="../../assets/images/ydzs.png" width="100px" style="float: left;margin-right: 10px;"> -->
                                <p> {{$t('floorPage_4')}} </p>
                             </div>
                         </van-cell>
