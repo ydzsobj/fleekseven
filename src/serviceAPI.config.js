@@ -6,9 +6,9 @@ if(process.env.NODE_ENV === 'development'){
     var LOCALURL =  "http://www.website.cc/"
 }else{
     if(document.location.protocol ==='http:'){
-        var LOCALURL =  "http://shop.trendepan.com/"
+        var LOCALURL =  "http://shop.foreign-trade-mall.com/"
     }else{
-        var LOCALURL =  "https://shop.trendepan.com/"
+        var LOCALURL =  "https://shop.foreign-trade-mall.com/"
     }
     
 }
