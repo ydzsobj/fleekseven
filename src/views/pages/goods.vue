@@ -906,6 +906,7 @@
     }
 
     .swiper-area{
+      margin-top: 46px;
         clear:both;
         overflow: hidden;
     }
