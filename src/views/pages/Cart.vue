@@ -161,6 +161,7 @@
             @input="fbinput"
           />
             <van-field
+              v-if="cartInfo.some(function(good){return good.show_coupon_code == 1})"
               v-model="coupoCode"
               :label="$t('coupoCode')"
               clearable

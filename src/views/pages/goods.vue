@@ -644,6 +644,7 @@
                      let newGoodsInfo = {
                          name:this.goodsInfo.name,
                          title:this.goodsInfo.title,
+                         show_coupon_code: this.goodsInfo.show_coupon_code,
                          skuAttrText: this.skuAttrTextFun(skuData)
                      }
                      cartInfo.push(Object.assign(newGoodsInfo , skuData))     
@@ -698,6 +699,7 @@
                   let newGoodsInfo = {
                        name:this.goodsInfo.name,
                        title: this.goodsInfo.title,
+                       show_coupon_code: this.goodsInfo.show_coupon_code,
                        skuAttrText: this.skuAttrTextFun(skuData)
                    } 
                   try{fbq('track', 'AddToCart');console.log('addtocart')}catch(e){} 
@@ -860,6 +862,7 @@
                       let newGoodsInfo = {
                        name:this.goodsInfo.name,
                        title: this.goodsInfo.title,
+                       show_coupon_code: this.goodsInfo.show_coupon_code,
                        skuAttrText: this.skuAttrTextFun(skuData)
                       } 
                       skuDatas =  Object.assign(newGoodsInfo , skuData)
