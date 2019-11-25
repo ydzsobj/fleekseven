@@ -383,7 +383,7 @@
                 notice_con_1:'',
                 notice_con:['一觉游仙好梦，任它竹冷松寒；轩辕事，古今谈，风流河山；沉醉赴白首，舒怀成大观，梦在人间，醒亦在人间。','天地俱不醒，落得昏沉醉梦；鸿蒙率是客，罔寻辽阔主人。','悟来时见江海古，苍崖行遍谒玄门'],
                 activeTab: 0,
-                star_scores: 1,
+                star_scores: 5,
                 message: '',
                 telephone: '',
                 name:'',
