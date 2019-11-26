@@ -296,6 +296,7 @@
             @click.native="showSkuCart" style="border-radius: 0;margin-right: 5px; background: linear-gradient(to right, #ffd01e, #ef3470)"
           />
           <van-goods-action-button
+            class="buyani"
             type="danger"
             :text="$t('buy')"
             @click.native="showSkuBuy" style="border-radius: 0;background: linear-gradient(to right, #ef3470, #ef3470)"
@@ -1100,5 +1101,28 @@
 }
 #detailcontent >>> p {
   word-wrap:break-word;
+}
+.buyani {
+   animation: buycount 3s infinite linear 1.8s;
+}
+@keyframes buycount {
+  0% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  85% {
+    transform: scale(1.1);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  95% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
