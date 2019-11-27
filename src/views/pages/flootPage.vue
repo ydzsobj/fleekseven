@@ -52,7 +52,7 @@ export default {
         }
     },
     activated(){
-         this.flootType = this.$route.params.flootType
+         this.flootType = this.$route.query.flootType
     }
     
 }

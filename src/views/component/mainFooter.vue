@@ -37,7 +37,7 @@ export default {
     },
     methods:{
             go(type) {
-                this.$router.push({name:'flootPage',params:{flootType:type}})
+                this.$router.push({name:'flootPage',query:{flootType:type}})
             }
     },
     mounted(){
