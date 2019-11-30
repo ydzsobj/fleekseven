@@ -35,7 +35,7 @@
               :thumb="showImage(item.skuAttrText)"
             >
                <div slot="tags" class="redcolor">
-                   <span v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{item.selectedSkuComb.price | int}}</span>
+                   <span v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{item.selectedSkuComb.price | int | toThousands}}</span>
                    <span v-else>{{$store.state.money_sign}}{{item.selectedSkuComb.price | toDivide}}</span>
                </div>
                <div slot="num">
@@ -184,7 +184,7 @@
           @submit="onSubmit"
         >
            <div v-if="total_off" slot="tip"> {{$t('couponmoney')}}
-                <span v-if="$store.state.lang==='ind-BA'" style="float: right;">-{{$store.state.money_sign}}{{total_off| int}}</span>
+                <span v-if="$store.state.lang==='ind-BA'" style="float: right;">-{{$store.state.money_sign}}{{total_off| int | toThousands}}</span>
                 <span v-else style="float: right;">-{{$store.state.money_sign}}{{total_off| toDivide}}</span>
             </div>
         </van-submit-bar>
@@ -264,6 +264,10 @@
        activated(){
            this.getCartInfo() 
            this.submitloading= false //每次进来 防止有loading
+           if(this.$store.state.lang === 'ind-BA'){
+            console.log( document.getElementsByClassName('van-submit-bar__price'),toThousands( int(this.totalMoneyCoupon) ).toString() )
+            document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(this.totalMoneyCoupon) ).toString()
+           }
        },
     //    mounted() {console.log(this.cartInfo)},
        computed:{
@@ -320,11 +324,18 @@
                 this.coupoCodeSend() //如果购物车数量价格变化，发送优惠码和购物车数据去后台
               },
               deep: true
+          },
+          totalMoneyCoupon(val){
+             console.log(val)
+                if(this.$store.state.lang === 'ind-BA'){
+                     console.log( document.getElementsByClassName('van-submit-bar__price'),toThousands( int(val) ).toString() )
+                   document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(val) ).toString()
+                 }
           }
        },
        filters:{
            toThousands(money){
-              return toThousands()
+              return toThousands(money)
            },
            moneyFilter(money){
                return toMoney(money)

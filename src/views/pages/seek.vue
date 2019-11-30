@@ -35,7 +35,7 @@
                         <div class="list-item-text">
                             <div>{{item.name}}</div>                                                                        
                             <!-- <div>{{$store.state.money_sign}}{{ $store.state.lang ==='ind-BA' ? item.price | int : item.price | toDivide}}</div> -->
-                            <div class="goods-price" v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{item.price |num}} <s> {{$store.state.money_sign}}{{item.mallPrice |num}}</s></div>
+                            <div class="goods-price" v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{item.price |num | toThousands}} <s> {{$store.state.money_sign}}{{item.mallPrice |num |toThousands}}</s></div>
                             <div class="goods-price" v-else>{{$store.state.money_sign}}{{item.price}} <s> {{$store.state.money_sign}}{{item.mallPrice}}</s></div>
                             </div>
                     </div>
@@ -53,7 +53,7 @@
 <script>
 import axios from 'axios'
 import url from '@/serviceAPI.config.js'
-import {toMoney ,toDivide, int,num} from '@/filter/moneyFilter.js'
+import {toMoney ,toDivide, int,num,toThousands} from '@/filter/moneyFilter.js'
 export default {
     data() {
         return {
@@ -89,7 +89,10 @@ export default {
             },
             num(money){
                 return num(money)
-            }
+            },
+            toThousands(money){
+              return toThousands(money)
+           }
         },
     methods:{
         onClickLeft () {

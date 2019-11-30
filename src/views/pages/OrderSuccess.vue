@@ -19,13 +19,13 @@
            :thumb="showImage(item.skuAttrText)"
          >
             <div slot="tags" class="redcolor">
-                <span v-if="$store.state.lang==='ind-BA'" >{{moneySign}}{{item.selectedSkuComb.price | int}}</span>
+                <span v-if="$store.state.lang==='ind-BA'" >{{moneySign}}{{item.selectedSkuComb.price | int | toThousands}}</span>
                 <span v-else >{{moneySign}}{{item.selectedSkuComb.price | toDivide}}</span>
             </div>
         </van-card>
 
           <van-cell>
-                <span class="redcolorpirce" v-if="$store.state.lang==='ind-BA'" >{{moneySign}}{{orderResponse.price*100 | int}}</span>
+                <span class="redcolorpirce" v-if="$store.state.lang==='ind-BA'" >{{moneySign}}{{orderResponse.price*100 | int | toThousands}}</span>
                 <span class="redcolorpirce" v-else >{{moneySign}}{{orderResponse.price*100 | toDivide}}</span>
           </van-cell>
 
@@ -62,7 +62,7 @@
     </div>
 </template>
 <script>
-    import { toMoney, toDivide, int} from '@/filter/moneyFilter.js'
+    import { toMoney, toDivide, int,toThousands} from '@/filter/moneyFilter.js'
     import resGoods from '../component/resGoods'
 export default {
     components:{resGoods},
@@ -93,6 +93,9 @@ export default {
         }
     },
     filters:{
+         toThousands(money){
+              return toThousands(money)
+           },
         toDivide (money){
             return toDivide(money)
         },

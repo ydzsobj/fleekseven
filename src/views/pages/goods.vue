@@ -55,7 +55,7 @@
           <van-cell :border="false">
             <div class="goods-title"><h1 style="font-size: 24px;line-height: 1.5;">{{ goodsInfo.title}}</h1></div>
             <div class="huicolor">{{ goodsInfo.about}}</div>
-            <div v-if="$store.state.lang==='ind-BA'" class="goods-price">{{goodsInfo.money_sign}}{{goodsInfo.price | num}}  <s class="huicolor">{{goodsInfo.money_sign}}{{goodsInfo.original_price | num}}</s></div>
+            <div v-if="$store.state.lang==='ind-BA'" class="goods-price">{{goodsInfo.money_sign}}{{goodsInfo.price | num | toThousands}}  <s class="huicolor">{{goodsInfo.money_sign}}{{goodsInfo.original_price | num | toThousands}}</s></div>
             <div v-else class="goods-price"> <s class="huicolor">{{goodsInfo.money_sign}}{{goodsInfo.original_price }}</s> {{goodsInfo.money_sign}}{{goodsInfo.price }} </div>
           </van-cell>
           <!-- <van-cell :border="false">
@@ -331,7 +331,7 @@
            <template slot="sku-header-price" slot-scope="props">
              <div class="van-sku__goods-price">
                <span class="van-sku__price-symbol">{{goodsInfo.money_sign}}</span>
-               <span  v-if="$store.state.lang==='ind-BA'" class="van-sku__price-num">{{ props.price | num}}</span>
+               <span  v-if="$store.state.lang==='ind-BA'" class="van-sku__price-num">{{ props.price | num | toThousands}}</span>
                <span v-else class="van-sku__price-num">{{ props.price }}</span>
              </div>
            </template>
@@ -361,7 +361,7 @@
     import {ImagePreview} from 'vant'
     import {Sku} from '../../vant' //sku组件有改动所以用自定义的vant
     // import '../../vant/lib/index.css';
-    import {toMoney, int,num} from '@/filter/moneyFilter.js'
+    import {toMoney, int,num,toThousands} from '@/filter/moneyFilter.js'
     import checkoutLang from '@/lang.js'
     import { setTimeout } from 'timers'
     import cart from '@/views/pages/Cart'
@@ -521,7 +521,10 @@
             },
             num(money){
                 return num(money)
-            }
+            },
+            toThousands(money){
+              return toThousands(money)
+           }
         },
         created(){
             this.goodsId=this.$route.query.goodsId ?this.$route.query.goodsId-0: this.$route.params.goodsId-0

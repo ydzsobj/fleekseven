@@ -5,14 +5,14 @@
         </div>
         <div class="goods-name">{{goodsName}}</div>
         <!-- <div class="goods-price">{{$store.state.money_sign}}{{goodsPrice  }}</div> -->
-        <div class="goods-price" v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{goodsPrice |num}} <s> {{$store.state.money_sign}}{{mallPrice |num}}</s></div>
+        <div class="goods-price" v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}}{{goodsPrice |num|toThousands}} <s> {{$store.state.money_sign}}{{mallPrice |num|toThousands}}</s></div>
         <div class="goods-price" v-else>{{$store.state.money_sign}}{{goodsPrice}} <s> {{$store.state.money_sign}}{{mallPrice}}</s></div>
         <div class="goods-btn">{{$t('buyNow')}}</div>
     </div>
 </template>
 
 <script>
-    import {toMoney,num}  from '@/filter/moneyFilter.js'
+    import {toMoney,num,toThousands}  from '@/filter/moneyFilter.js'
     export default {
         props:['goodsImage','goodsName','goodsPrice','goodsId','mallPrice'],
         filters:{
@@ -21,7 +21,10 @@
             },
             num(money){
                 return num(money)
-            }
+            },
+            toThousands(money){
+              return toThousands(money)
+           }
         },
         methods: {
             goGoodsPage() {

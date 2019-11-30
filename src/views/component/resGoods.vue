@@ -6,7 +6,8 @@
                    <div class="recommend-item">
                        <img :src="item.image" width="80%" @click="goGoodsPage(item.goodsId)">
                        <div>{{item.name}}</div>
-                       <div>{{$store.state.money_sign}} {{ item.price }}</div>
+                       <div v-if="$store.state.lang==='ind-BA'">{{$store.state.money_sign}} {{ item.price | num | toThousands}}</div>
+                       <div v-else >{{$store.state.money_sign}} {{ item.price }}</div>
                    </div>
                </swiper-slide> 
             </swiper>
@@ -17,6 +18,7 @@
     import 'swiper/dist/css/swiper.css'
     import {swiper , swiperSlide} from 'vue-awesome-swiper'
     import url from '@/serviceAPI.config.js'
+    import { num, toDivide, int,toThousands} from '@/filter/moneyFilter.js'
 
 export default {
     components:{swiper,swiperSlide},
@@ -48,6 +50,20 @@ export default {
         .catch(error=>{
             // console.log(error)
         })
+    },
+    filters:{
+         toThousands(money){
+              return toThousands(money)
+           },
+        toDivide (money){
+            return toDivide(money)
+        },
+        int (money){
+            return int(money)
+        },
+        num (money) {
+            return int(money)
+        }
     },
     methods: {
         goGoodsPage(goodsId) {
