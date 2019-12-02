@@ -85,6 +85,7 @@
             @input="fbinput"
           />
             <van-field
+            v-if="$store.state.lang === 'ind-BA'"
             v-model="telephone2"
             :label="$t('phoneNumber2')"
             clearable
@@ -422,7 +423,7 @@
                    this.errTelephone = this.$t('errTelephone');return
                }else if (!regTele.test(this.telephone)){
                    this.errTelephone = this.$t('errTelephone2');return
-               }else if (this.telephone !=this.telephone2){
+               }else if (this.telephone !=this.telephone2 && this.$store.state.lang === 'ind-BA'){
                    this.errTelephone = this.$t('errTelephone3');return
                }else if (this.short_address===''){
                    this.errShort_address = this.$t('errShort_address');return
