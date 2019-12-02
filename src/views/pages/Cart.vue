@@ -108,7 +108,7 @@
           <van-field
             readonly
             @focus="focusProvin"
-            v-model="short_address"
+            v-model="province"
             :label="$t('province')"
             clearable
             clickable
@@ -117,7 +117,43 @@
             :error-message="errShort_address"
             @input="fbinput"
           />
-          <van-field
+            <van-field
+            readonly
+            @focus="focusCrity"
+            v-model="crity"
+            :label="$t('crity')"
+            clearable
+            clickable
+            :placeholder="$t('provinceholder')"
+            required
+            :error-message="errShort_address"
+            @input="fbinput"
+          />
+            <van-field
+            readonly
+            @focus="focusArea"
+            v-model="area"
+            :label="$t('area')"
+            clearable
+            clickable
+            :placeholder="$t('provinceholder')"
+            required
+            :error-message="errShort_address"
+            @input="fbinput"
+          />
+           <van-field
+            readonly
+            @focus="focusPost"
+            v-model="zipCode"
+            :label="$t('post')"
+            clearable
+            clickable
+            :placeholder="$t('provinceholder')"
+            required
+            :error-message="errShort_address"
+            @input="fbinput"
+          />
+          <!-- <van-field
             v-if="$store.state.lang === 'ind-BA'"
             required
             :label="$t('zipCode')"
@@ -140,7 +176,7 @@
             :placeholder="$t('zipCodeholder')"
             type="number"
             @input="fbinput"
-           />
+           /> -->
             <van-field
               v-model="address"
               :label="$t('address')"
@@ -192,10 +228,20 @@
         <van-overlay
          z-index="101"
          :show="areaShow"
-          @click="areaShow = false"
+         @click="areaShow = false;pickShow1= false;pickShow2= false;pickShow3= false;pickShow4= false"
         />
         <transition name="fade">
-          <van-area class="area left50" :area-list="areaList" v-show="areaShow" @confirm="confirm" @cancel="cancel" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/>
+          <!-- <van-area class="area left50" :area-list="areaList" v-show="areaShow" @confirm="confirm" @cancel="cancel" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/> -->
+            <van-picker class="area left50" :visible-item-count="7" show-toolbar :columns="provinceList" v-show="pickShow1" @cancel="cancel1" @confirm="confirm1" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/>
+        </transition>
+        <transition name="fade">
+            <van-picker class="area left50" :visible-item-count="7" show-toolbar :columns="crityList" v-show="pickShow2" @cancel="cancel2" @confirm="confirm2" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/>
+        </transition>
+        <transition name="fade">
+            <van-picker class="area left50" :visible-item-count="7" show-toolbar :columns="areasList" v-show="pickShow3" @cancel="cancel3" @confirm="confirm3" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/>
+        </transition>
+        <transition name="fade">
+            <van-picker class="area left50" show-toolbar :columns="postList" v-show="pickShow4" @cancel="cancel4" @confirm="confirm4" :confirm-button-text="$t('confirm')" :cancel-button-text="$t('cancel')"/>
         </transition>
     </div>
     
@@ -218,6 +264,17 @@
        },
        data() {
            return {
+               provinceList: [],
+               crityList: [],
+               areasList: [],
+               postList: [],
+               province: '',
+               crity: '',
+               area: '',
+               pickShow1:false,
+               pickShow2:false,
+               pickShow3:false,
+               pickShow4:false,
                couponid: null,
                total_off: null,
                decimalLength: 0,
@@ -270,7 +327,20 @@
             document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(this.totalMoneyCoupon) ).toString()
            }
        },
-    //    mounted() {console.log(this.cartInfo)},
+       mounted() {
+        //    console.log(this.cartInfo)
+            this.province= this.areaList[0].name
+            this.provinceList= this.areaList.map(function(e){return e.name})
+
+            this.crity= this.areaList[0].cityList[0].name
+            this.crityList= this.areaList[0].cityList.map(function(e){return e.name})
+
+            this.area= this.areaList[0].cityList[0].areaList[0].name
+            this.areasList= this.areaList[0].cityList[0].areaList.map(function(e){return e.name})
+
+            this.zipCode= this.areaList[0].cityList[0].areaList[0].postList[0]
+            this.postList= this.areaList[0].cityList[0].areaList[0].postList
+           },
        computed:{
            totalMoney(){
                this.malldata = []
@@ -310,7 +380,7 @@
                     return obj
                 }else if (this.$store.state.lang === 'en-PHP'){
                     this.decimalLength = 2
-                    return objFlb
+                    return JSON.parse(JSON.stringify(objFlb).replace(/&#39;/g,"'"))
                 }else{
                     this.decimalLength = 2
                     return obj
@@ -401,6 +471,7 @@
                 this.checkedGoods=[]
             },
             onSubmit(){
+               this.short_address = this.province +"/"+this.crity +"/"+this.area
                this.errName=''
                this.errTelephone=''
                this.errAddress=''
@@ -512,18 +583,96 @@
             },
             focusProvin(){
               this.areaShow = true
+              this.pickShow1 = true
             },
-            confirm(list){
+            focusCrity(){
+              this.areaShow = true
+              this.pickShow2 = true
+            },
+            focusArea(){
+              this.areaShow = true
+              this.pickShow3 = true
+            },
+            focusPost(){
+              this.areaShow = true
+              this.pickShow4 = true
+            },
+            confirm1(list){
                 this.areaShow = false
+                this.pickShow1 = false
                 // console.log(list)
-                this.short_address = list[0].name + '/' + list[1].name + '/' +list[2].name
-                this.optionsArrt = this.areaList.post[list[2].code] || []  //对应省市区的 邮政编码数组赋值
-                if( this.areaList.post[list[2].code] ){  this.zipCode= this.optionsArrt[0] }
+                this.province = list
+
+                let arr = this.areaList.find(function(e){return e.name == list}).cityList.map(function(e){return e.name})
+                this.crity= arr[0]
+                this.crityList= arr
+                
+                let arr2 = this.areaList.find(function(e){return e.name == list}).cityList[0].areaList.map(function(e){return e.name})
+                this.area =arr2[0]
+                this.areasList= arr2
+
+                let arr3 = this.areaList.find(function(e){return e.name == list}).cityList[0].areaList[0].postList
+                this.zipCode= arr3[0]
+                this.postList = arr3
+                // this.short_address = list[0].name + '/' + list[1].name + '/' +list[2].name
+                // this.optionsArrt = this.areaList.post[list[2].code] || []  //对应省市区的 邮政编码数组赋值
+                // if( this.areaList.post[list[2].code] ){  this.zipCode= this.optionsArrt[0] }
                
                 this.fbinput()
             },
-            cancel(){
+            confirm2(list){
                 this.areaShow = false
+                this.pickShow2 = false
+                console.log(list)
+                this.crity = list
+                
+                let province= this.province
+                let arr2 = this.areaList.find(function(e){return e.name ==  province}).cityList.find(function(e){return e.name ==  list }).areaList.map(function(e){return e.name})
+                this.area =arr2[0]
+                this.areasList= arr2
+
+                let arr3 = this.areaList.find(function(e){return e.name ==  province}).cityList.find(function(e){return e.name ==  list }).areaList[0].postList
+                this.zipCode= arr3[0]
+                this.postList = arr3
+
+                this.fbinput()
+            },
+            confirm3(list){
+                this.areaShow = false
+                this.pickShow3 = false
+                console.log(list)
+                this.area = list
+
+                let province= this.province
+                let crity= this.crity
+                let arr3 = this.areaList.find(function(e){return e.name ==  province}).cityList.find(function(e){return e.name ==  crity }).areaList.find(function(e){return e.name == list}).postList
+                this.zipCode= arr3[0]
+                this.postList = arr3
+
+                this.fbinput()
+            },
+            confirm4(list){
+                this.areaShow = false
+                this.pickShow4 = false
+                console.log(list)
+                this.zipCode = list
+                this.fbinput()
+            },
+            cancel1(){
+                this.areaShow = false
+                this.pickShow1 = false
+            },
+            cancel2(){
+                this.areaShow = false
+                this.pickShow2 = false
+            },
+            cancel3(){
+                this.areaShow = false
+                this.pickShow3 = false
+            },
+            cancel4(){
+                this.areaShow = false
+                this.pickShow4 = false
             },
             checkedGo(skuid){
             //   console.log(skuid,this.checkedGoods.every((e)=>{return e!=skuid}),this.checkedGoods)
