@@ -17,7 +17,7 @@ export default {
     shopCart: 'Daftar belanja',
     store: 'Mall', //店铺
     addCart: 'Tambahkan ke daftar belanja',
-    buy: 'Segera pesan',//立即购买
+    buy: 'Beli Sekarang',//立即购买
     ok: 'Konfirm',
     buyNum: 'Jumlah pesanan', //购买数量
     message: 'Tinggalkan pesan', //留言
@@ -33,7 +33,7 @@ export default {
     couponerr: 'Kode promo tidak valid',
     couponmoney: 'Jumlah bantuan',
     couponUn: 'Preferential terms not met',
-    account: 'Penyelesaian',
+    account: 'Beli',
     total: 'Jumlah',
     back: 'Kembali',
     clearCart: 'Hapuskan daftar',
