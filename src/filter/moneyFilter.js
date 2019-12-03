@@ -17,14 +17,16 @@ export function toDivide(money = 0){
 		return value
       }
 }
-export function toThousands(num) {
-	var num = (num || 0).toString(), result = '';
+export function toThousands(money =0) {
+	var s= money.toString().split(".")
+	var num = s[0], result = '';
 	while (num.length > 3) {
 		result = ',' + num.slice(-3) + result;
 		num = num.slice(0, num.length - 3);
 	}
 	if (num) { result = num + result; }
-	return result;
+	if(s[1]) {result = result + '.' + s[1]}
+	return result ;
 }
 export function int (money = 0){
 	return Number(money)/100

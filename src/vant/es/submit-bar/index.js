@@ -15,8 +15,8 @@ function SubmitBar(h, props, slots, ctx) {
       tipIcon = props.tipIcon;
 
   function Text() {
-    if (typeof price === 'number') {
-      var priceText = props.currency + " " + (price / 100).toFixed(props.decimalLength);
+
+      var priceText = props.currency + " " + price.toString();
       return h("div", {
         "class": bem('text')
       }, [h("span", [props.label || t('label')]), h("span", {
@@ -24,7 +24,7 @@ function SubmitBar(h, props, slots, ctx) {
       }, [priceText]), props.suffixLabel && h("span", {
         "class": bem('suffix-label')
       }, [props.suffixLabel])]);
-    }
+    
   }
 
   function Tip() {
@@ -69,7 +69,7 @@ function SubmitBar(h, props, slots, ctx) {
 SubmitBar.props = {
   tip: String,
   label: String,
-  price: Number,
+  price: 0,
   tipIcon: String,
   loading: Boolean,
   disabled: Boolean,

@@ -214,7 +214,6 @@
          :loading="submitloading"
          :currency="$store.state.money_sign"
           :price="totalMoneyCoupon"
-          :decimal-length="decimalLength"
           :disabled="(checkedGoods.length <= 0 && isBuyCartAttr != 'buy')|| submitloading"
           :button-text="$t('account')"
           :label="$t('total')"
@@ -254,7 +253,11 @@
     import { toMoney, toDivide, toThousands,int} from '@/filter/moneyFilter.js'
     import obj from '@/province/ndnxy.js'
     import objFlb from '@/province/flb.js'
+    import {SubmitBar} from '../../vant' //sku组件有改动所以用自定义的vant
     export default {
+      components: {
+        [SubmitBar.name]: SubmitBar,
+      },
        props: {
            isBuyCartAttr: String,
            fatherSkuData: {
@@ -322,10 +325,6 @@
        activated(){
            this.getCartInfo() 
            this.submitloading= false //每次进来 防止有loading
-           if(this.$store.state.lang === 'ind-BA'){
-            console.log( document.getElementsByClassName('van-submit-bar__price'),toThousands( int(this.totalMoneyCoupon) ).toString() )
-            document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(this.totalMoneyCoupon) ).toString()
-           }
             if(this.isBuyCartAttr === 'buy'){
               this.couponid = null;  // 数量变化先把优惠码id清空
               this.total_off = null; // 数量变化先把优惠清空了
@@ -372,22 +371,18 @@
            totalMoneyCoupon(){
             //    console.log(this.totalMoney - this.total_off)
                let num = this.totalMoney - this.total_off
-                 if(this.$store.state.lang === 'ind-BA' && (num/100).toString().indexOf('.')>0){
-                     this.decimalLength = 2
-                 }else if(this.$store.state.lang === 'ind-BA' && (num/100).toString().indexOf('.') === -1){
-                     this.decimalLength = 0
-                 }   //印尼地区每次价格变动都会看有没有小数点，有小数就保留两位，否则还是保留整数
-               return num
+                 if(this.$store.state.lang === 'ind-BA'){
+                     return toThousands(int(num))
+                 }else {
+                     return toDivide(num)
+                 }
            },
            areaList(){
                if(this.$store.state.lang === 'ind-BA'){
-                    this.decimalLength = 0
                     return obj
                 }else if (this.$store.state.lang === 'en-PHP'){
-                    this.decimalLength = 2
                     return JSON.parse(JSON.stringify(objFlb).replace(/&#39;/g,"'"))
                 }else{
-                    this.decimalLength = 2
                     return obj
                 }
                }
@@ -400,13 +395,6 @@
                 this.coupoCodeSend() //如果购物车数量价格变化，发送优惠码和购物车数据去后台
               },
               deep: true
-          },
-          totalMoneyCoupon(val){
-             console.log(val)
-                if(this.$store.state.lang === 'ind-BA'){
-                     console.log( document.getElementsByClassName('van-submit-bar__price'),toThousands( int(val) ).toString() )
-                   document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(val) ).toString()
-                 }
           }
        },
        filters:{
