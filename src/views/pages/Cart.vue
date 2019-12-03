@@ -326,6 +326,11 @@
             console.log( document.getElementsByClassName('van-submit-bar__price'),toThousands( int(this.totalMoneyCoupon) ).toString() )
             document.getElementsByClassName('van-submit-bar__price')[0].innerText = this.$store.state.money_sign + toThousands( int(this.totalMoneyCoupon) ).toString()
            }
+            if(this.isBuyCartAttr === 'buy'){
+              this.couponid = null;  // 数量变化先把优惠码id清空
+              this.total_off = null; // 数量变化先把优惠清空了
+              this.coupoCode= ''
+           }
        },
        mounted() {
         //    console.log(this.cartInfo)
