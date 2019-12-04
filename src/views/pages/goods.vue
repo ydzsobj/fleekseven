@@ -554,6 +554,9 @@
               this.getInfo()
               // this.getNotice()
             }
+            if(Object.keys(this.goodsInfo).length==0){
+              this.getInfo()   //如果goodsInfo 为空 就发
+            }
         },
         methods: {
             getNotice() {   
