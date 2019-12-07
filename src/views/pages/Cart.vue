@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-show="false">{{areaList[0].name}}</div>
         <div class="navbar-div" v-if="isBuyCartAttr != 'buy'">
             <van-nav-bar :title="isBuy ? $t('account'): $t('shopCart')" :left-text="$t('back')" left-arrow @click-left="onClickLeft">
               <!-- <van-icon name="search" slot="right" /> -->
@@ -333,17 +334,17 @@
        },
        mounted() {
         //    console.log(this.cartInfo)
-            this.province= this.areaList[0].name
-            this.provinceList= this.areaList.map(function(e){return e.name})
+            // this.province= this.areaList[0].name
+            // this.provinceList= this.areaList.map(function(e){return e.name})
 
-            this.crity= this.areaList[0].cityList[0].name
-            this.crityList= this.areaList[0].cityList.map(function(e){return e.name})
+            // this.crity= this.areaList[0].cityList[0].name
+            // this.crityList= this.areaList[0].cityList.map(function(e){return e.name})
 
-            this.area= this.areaList[0].cityList[0].areaList[0].name
-            this.areasList= this.areaList[0].cityList[0].areaList.map(function(e){return e.name})
+            // this.area= this.areaList[0].cityList[0].areaList[0].name
+            // this.areasList= this.areaList[0].cityList[0].areaList.map(function(e){return e.name})
 
-            this.zipCode= this.areaList[0].cityList[0].areaList[0].postList[0]
-            this.postList= this.areaList[0].cityList[0].areaList[0].postList
+            // this.zipCode= this.areaList[0].cityList[0].areaList[0].postList[0]
+            // this.postList= this.areaList[0].cityList[0].areaList[0].postList
            },
        computed:{
            totalMoney(){
@@ -377,12 +378,18 @@
                      return toDivide(num)
                  }
            },
+           lang(){
+               return this.$store.state.lang
+           },
            areaList(){
-               if(this.$store.state.lang === 'ind-BA'){
+               if(this.lang === 'ind-BA'){   
+                    this.provinceinit(obj)
                     return obj
-                }else if (this.$store.state.lang === 'en-PHP'){
+                }else if (this.lang === 'en-PHP'){
+                    this.provinceinit(JSON.parse(JSON.stringify(objFlb).replace(/&#39;/g,"'")))
                     return JSON.parse(JSON.stringify(objFlb).replace(/&#39;/g,"'"))
                 }else{
+                    this.provinceinit(obj)
                     return obj
                 }
                }
@@ -412,6 +419,19 @@
            }
        },
        methods: {
+           provinceinit(data){
+            this.province= data[0].name
+            this.provinceList= data.map(function(e){return e.name})
+
+            this.crity= data[0].cityList[0].name
+            this.crityList= data[0].cityList.map(function(e){return e.name})
+
+            this.area= data[0].cityList[0].areaList[0].name
+            this.areasList= data[0].cityList[0].areaList.map(function(e){return e.name})
+
+            this.zipCode= data[0].cityList[0].areaList[0].postList[0]
+            this.postList= data[0].cityList[0].areaList[0].postList
+           },
            onClickLeft () {
                this.$router.go(-1)
            },
