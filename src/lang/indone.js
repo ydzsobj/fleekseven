@@ -33,7 +33,7 @@ export default {
     couponerr: 'Kode promo tidak valid',
     couponmoney: 'Jumlah bantuan',
     couponUn: 'Preferential terms not met',
-    account: 'Beli',
+    account: 'Beli Sekarang',
     total: 'Jumlah',
     back: 'Kembali',
     clearCart: 'Hapuskan daftar',

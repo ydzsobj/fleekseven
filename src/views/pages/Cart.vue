@@ -828,4 +828,7 @@
 .navbar-div >>> .van-nav-bar__title{
     font-size: 16px
 }
+>>> .van-submit-bar__button {
+     width: 120px;
+}
 </style>
