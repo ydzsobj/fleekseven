@@ -547,7 +547,7 @@
                             localStorage.cartInfo =  JSON.stringify(newCart)       
                             }
 
-                            try{ fbq('track', 'Purchase', {value: int(this.countPrice), currency:'USD'}) ;console.log('Purchase')}catch(e){}
+                            try{ fbq('track', 'Purchase', {value: int(this.countPrice), currency: this.$store.state.money_sign}) ;console.log('Purchase')}catch(e){}
                             this.$router.push({name:'order',params:{orderData: this.malldataOrder,orderResponse: response.data.data}})
                         }else{
                             Toast(this.$t('serveError'));Toast(this.$t('serveError'))
