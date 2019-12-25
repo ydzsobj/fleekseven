@@ -1108,6 +1108,9 @@
 #detailcontent >>> p {
   word-wrap:break-word;
 }
+#detailcontent >>> iframe {
+  width: 100%;
+}
 .buyani {
    animation: buycount 3s infinite linear 1.8s;
 }
